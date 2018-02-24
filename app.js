@@ -8,7 +8,6 @@ var DB = require('./public/javascripts/DB').DBOpera;
 
 // 引入api文件
 var api = require('./api/api');
-
 var index = require('./routes/index');
 var users = require('./routes/users');
 
@@ -17,6 +16,21 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+
+//allow custom header and CORS  
+//这里备份下，主要在前端使用http-proxy-middleware插件代理完成跨域请求
+// app.all('*',function (req, res, next) {
+//   res.header('Access-Control-Allow-Origin', '*');
+//   res.header('Access-Control-Allow-Headers', 'Content-Type, Content-Length, Authorization, Accept, X-Requested-With , yourHeaderFeild');
+//   res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
+
+//   if (req.method == 'OPTIONS') {
+//     res.send(200); // 让options请求快速返回
+//   }
+//   else {
+//     next();
+//   }
+// });
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -65,7 +79,7 @@ function test() {
   })
 }
 // test();
-query();
+// query();
 
 module.exports = app;
 app.listen(8888);
