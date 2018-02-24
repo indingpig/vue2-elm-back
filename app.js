@@ -6,6 +6,9 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var DB = require('./public/javascripts/DB').DBOpera;
 
+// 引入api文件
+var api = require('./api/api');
+
 var index = require('./routes/index');
 var users = require('./routes/users');
 
@@ -25,6 +28,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
+// api接口
+app.use('/api', api)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
