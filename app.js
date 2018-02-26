@@ -2,6 +2,7 @@ var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
+var fs = require('fs');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var DB = require('./public/javascripts/DB').DBOpera;
@@ -38,7 +39,13 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+// 
+// 部署的vue项目
+app.use(express.static(path.resolve(__dirname, './dist'))); // public 要改为dist目录
+app.get('*', function(req, res) {
+  const html = fs.readFileSync(path.resolve(__dirname, 'index.html'), 'utf-8')
+  res.send(html)
+})
 
 app.use('/', index);
 app.use('/users', users);

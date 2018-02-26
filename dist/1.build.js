@@ -1,0 +1,2 @@
+webpackJsonp([1],{24:function(e,t,n){"use strict";t.a={data:function(){return{headMsg:"This page is Home page"}},computed:{},methods:{}}},31:function(e,t,n){"use strict";var s=function(){var e=this,t=e.$createElement,n=e._self._c||t;return n("div",[n("h1",[e._v("\n      "+e._s(e.headMsg)+"\n    ")])])},a=[],r={render:s,staticRenderFns:a};t.a=r},5:function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var s=n(24),a=n(31),r=n(3),u=r(s.a,a.a,!1,null,null,null);t.default=u.exports}});
+//# sourceMappingURL=1.build.js.map
