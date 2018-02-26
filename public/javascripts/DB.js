@@ -22,10 +22,13 @@ var operate = {
         this.connect(function(erro, db, client) {
             if (erro) throw erro;
             var cursor = db.collection(collectionName).find(json);
+            console.log(`${json}`)
+            // var cursor = db.collection(collectionName).find({"sex":"female"});
             cursor.each(function (error, doc) {
                 if (error) throw error;
                 if (doc != null) {
                     result.push(doc)
+                    console.log(doc)
                 } else {
                     client.close();
                     callback(error, result)

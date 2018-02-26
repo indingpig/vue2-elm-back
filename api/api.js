@@ -19,8 +19,20 @@ router.get('/query/users', function(req, res, next) {
     console.log('Request URL:', req.originalUrl);
     // req.query 用于获取get请求的参数，封装成一个对象返回；
     var params = req.query
-    var collectionName = params.userlist;
-    DB.find(collectionName,{}, function(error, result) {
+    var collectionName = params.collectionName;
+    var condition = params.condition || {};
+    DB.find(collectionName,condition, function(error, result) {
+        res.send(result);
+    })
+})
+
+router.post('/query/testpost', function(req, res, next) {
+    console.log('Request URL:', req.originalUrl);
+    var params = req.body;
+    var collectionName = params.collectionName;
+    var condition = params.condition || {};
+    console.log(params)
+    DB.find(collectionName,condition, function(error, result) {
         res.send(result);
     })
 })
