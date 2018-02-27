@@ -43,7 +43,7 @@ app.use(cookieParser());
 // 部署的vue项目
 app.use(express.static(path.resolve(__dirname, './dist'))); // public 要改为dist目录
 app.get('*', function(req, res) {
-  const html = fs.readFileSync(path.resolve(__dirname, 'index.html'), 'utf-8')
+  const html = fs.readFileSync(path.resolve(__dirname, './dist/index.html'), 'utf-8')
   res.send(html)
 })
 
