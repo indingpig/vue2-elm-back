@@ -1,0 +1,2 @@
+webpackJsonp([2],{206:function(e,t,n){"use strict";t.a={data:function(){return{headMsg:"This page is Home page"}},computed:{},methods:{}}},211:function(e,t,n){"use strict";var a=function(){var e=this,t=e.$createElement;return(e._self._c||t)("div",[e._v("\n  首页\n")])},r=[],s={render:a,staticRenderFns:r};t.a=s},72:function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=n(206),r=n(211),s=n(46),u=s(a.a,r.a,!1,null,null,null);t.default=u.exports}});
+//# sourceMappingURL=2.build.js.map

@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var request = require('request');
 var DB = require('../public/javascripts/DB').DBOpera;
 
 router.use(function (req, res, next){
@@ -26,6 +27,20 @@ router.get('/query/users', function(req, res, next) {
     })
 })
 
+// 获取bing壁纸
+router.get('/query/picture', function(req, res, next) {
+    console.log('Request URL:', req.originalUrl);
+    var url = 'http://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1&mkt=en-US';
+    request(url, function(error, response, body) {
+        if (!error && response.statusCode == 200) {
+        }
+        console.log(error);
+        var imageUrl = 'https://www.bing.com' + JSON.parse(body).images[0].url;
+        res.send(imageUrl)
+    });
+})
+
+
 router.post('/query/testpost', function(req, res, next) {
     console.log('Request URL:', req.originalUrl);
     var params = req.body;
@@ -35,5 +50,8 @@ router.post('/query/testpost', function(req, res, next) {
     DB.find(collectionName,condition, function(error, result) {
         res.send(result);
     })
-})
+});
+
+
+
 module.exports = router;
