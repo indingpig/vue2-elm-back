@@ -30,7 +30,10 @@ router.get('/query/users', function(req, res, next) {
 // 获取bing壁纸
 router.get('/query/picture', function(req, res, next) {
     console.log('Request URL:', req.originalUrl);
-    var url = 'http://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1&mkt=en-US';
+    var params = req.query;
+    var day = +params.day;
+    // http://www.bing.com/HPImageArchive.aspx?format=js&idx=3&n=1&mkt=en-US
+    var url = 'http://www.bing.com/HPImageArchive.aspx?format=js&idx='+ day +'&n=1&mkt=en-US';
     request(url, function(error, response, body) {
         if (!error && response.statusCode == 200) {
         }
