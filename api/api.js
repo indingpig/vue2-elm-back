@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var request = require('request');
+var download = require('download');
+var fs = require('fs')
 var DB = require('../public/javascripts/DB').DBOpera;
 
 router.use(function (req, res, next){
@@ -39,6 +41,10 @@ router.get('/query/picture', function(req, res, next) {
         }
         console.log(error);
         var imageUrl = 'https://www.bing.com' + JSON.parse(body).images[0].url;
+        download(imageUrl).then(function(data) {
+            fs.writeFileSync('./tttt.jpg', data);
+            
+        })
         res.send(imageUrl)
     });
 })
