@@ -42,7 +42,8 @@ router.get('/query/picture', function(req, res, next) {
         console.log(error);
         var imageUrl = 'https://www.bing.com' + JSON.parse(body).images[0].url;
         download(imageUrl).then(function(data) {
-            fs.writeFileSync('./tttt.jpg', data);
+            // 文件写入到硬盘
+            // fs.writeFileSync('./tttt.jpg', data);
             
         })
         res.send(imageUrl)
