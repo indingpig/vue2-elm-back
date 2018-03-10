@@ -61,7 +61,23 @@ router.post('/query/signUp', function(req, res, next) {
 router.post('/query/checkEmail', function(req, res, next) {
     console.log('Request URL:', req.originalUrl);
     var params = req.body;
-    DB.find('user', )
+    var condition = {'userEmail': params.userEmail}
+    DB.find('userlist', condition, function(error, result) {
+        console.log(result)
+        if (result.length > 0) {
+            res.send({
+                valid: 0,
+                status: 200,
+                message: 'The email is unavailable'
+            })
+        } else {
+            res.send({
+                valid: 1,
+                status: 200,
+                message: 'The email is available'
+            })
+        }
+    })
     console.log(params);
 });
 
