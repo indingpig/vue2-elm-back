@@ -33,6 +33,22 @@ var operate = {
             })
         })
     },
+    findOne: function(collectionName, json, callback) { //查询一条数据，功能待加强
+        var result = [];
+        this.connect(function(erro, db, client) {
+            if (erro) throw erro;
+            var cursor = db.collection(collectionName).findOne(json);
+            cursor.each(function (error, doc) {
+                if (error) throw error;
+                if (doc != null) {
+                    result.push(doc);
+                } else {
+                    client.close();
+                    callback(error, result)
+                }
+            })
+        })
+    },
     count: function (collectionName, json, callback) { //查询文档item数量；
         this.connect(function(erro, db, client) {
             if (erro) throw erro;

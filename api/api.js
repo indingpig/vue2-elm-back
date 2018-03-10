@@ -57,6 +57,14 @@ router.post('/query/signUp', function(req, res, next) {
     console.log(params);
 });
 
+// 检测注册时邮箱是否被注册
+router.post('/query/checkEmail', function(req, res, next) {
+    console.log('Request URL:', req.originalUrl);
+    var params = req.body;
+    DB.find('user', )
+    console.log(params);
+});
+
 router.post('/query/testpost', function(req, res, next) {
     console.log('Request URL:', req.originalUrl);
     var params = req.body;
