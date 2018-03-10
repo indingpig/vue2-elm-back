@@ -29,7 +29,7 @@ router.get('/query/users', function(req, res, next) {
     })
 })
 
-// 获取bing壁纸
+// 登录界面壁纸。。。获取bing壁纸
 router.get('/query/picture', function(req, res, next) {
     console.log('Request URL:', req.originalUrl);
     var params = req.query;
@@ -50,6 +50,12 @@ router.get('/query/picture', function(req, res, next) {
     });
 })
 
+// 注册api接口;
+router.post('/query/signUp', function(req, res, next) {
+    console.log('Request URL:', req.originalUrl);
+    var params = req.body;
+    console.log(params);
+});
 
 router.post('/query/testpost', function(req, res, next) {
     console.log('Request URL:', req.originalUrl);
