@@ -11,7 +11,7 @@ var operate = {
     insertOne: function(collectionName, json, callback) {  // 插入一条数据；
         this.connect(function (erro, db,client) {
             if (erro) throw erro;
-            db.collection(collectionName).insert(json, function (error, result) {
+            db.collection(collectionName).insertOne(json, function (error, result) {
                 callback(error, result);
                 client.close();
             })

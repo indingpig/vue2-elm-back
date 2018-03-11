@@ -54,7 +54,15 @@ router.get('/query/picture', function(req, res, next) {
 router.post('/query/signUp', function(req, res, next) {
     console.log('Request URL:', req.originalUrl);
     var params = req.body;
-    console.log(params);
+    DB.insertOne('userlist', params, function(error, result) {
+        if (error) {
+            console.log(error);
+            return
+        }
+        if (result.ops.length > 0) {
+            res.send({"status":200,"msg":"注册成功","data":result.ops[0]})
+        }
+    });
 });
 
 // 检测注册时邮箱or用户名是否被注册
