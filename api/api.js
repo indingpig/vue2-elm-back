@@ -57,28 +57,26 @@ router.post('/query/signUp', function(req, res, next) {
     console.log(params);
 });
 
-// 检测注册时邮箱是否被注册
-router.post('/query/checkEmail', function(req, res, next) {
+// 检测注册时邮箱or用户名是否被注册
+router.post('/query/checkData', function(req, res, next) {
     console.log('Request URL:', req.originalUrl);
-    var params = req.body;
-    var condition = {'userEmail': params.userEmail}
+    var condition = req.body;
+    // var condition = {'userEmail': params.userEmail}
     DB.find('userlist', condition, function(error, result) {
-        console.log(result)
         if (result.length > 0) {
             res.send({
                 valid: 0,
                 status: 200,
-                message: 'The email is unavailable'
+                message: 'The data is unavailable'
             })
         } else {
             res.send({
                 valid: 1,
                 status: 200,
-                message: 'The email is available'
+                message: 'The data is available'
             })
         }
     })
-    console.log(params);
 });
 
 router.post('/query/testpost', function(req, res, next) {
