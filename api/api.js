@@ -49,6 +49,23 @@ router.get('/query/picture', function(req, res, next) {
         res.send(imageUrl)
     });
 })
+// 登陆接口
+router.post('/query/loginUp', function(req, res, next) {
+    console.log('Request URL:', req.originalUrl);
+    var params = req.body;
+    DB.find('userlist', params, function(error, result) {
+        if (error) {
+            console.log(error);
+            return
+        }
+        console.log(result)
+        if (result.length > 0) {
+            res.send({status: 1, msg: '登陆成功'})
+        } else {
+            res.send({status: 0, msg: '用户名或者密码错误'})
+        }
+    })
+})
 
 // 注册api接口;
 router.post('/query/signUp', function(req, res, next) {
