@@ -2,8 +2,12 @@ var express = require('express');
 var router = express.Router();
 var request = require('request');
 var download = require('download');
-var fs = require('fs')
+var fs = require('fs');
 var DB = require('../public/javascripts/DB').DBOpera;
+var session = require('express-session');
+
+// 使用express-session 校验登录状态
+router.use(session())
 
 router.use(function (req, res, next){
     console.log('Time', Date.now());
