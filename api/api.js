@@ -53,14 +53,18 @@ router.get('/query/picture', function(req, res, next) {
 router.post('/query/loginUp', function(req, res, next) {
     console.log('Request URL:', req.originalUrl);
     var params = req.body;
+    var user = null;
     DB.find('userlist', params, function(error, result) {
         if (error) {
             console.log(error);
             return
-        }
-        console.log(result)
+        };
         if (result.length > 0) {
-            res.send({status: 1, msg: '登陆成功'})
+            user = {
+                userEmail: result[0].userEmail,
+                userName: result[0].userName,
+            }
+            res.json({status: 1, msg: '登陆成功', userData: user})
         } else {
             res.send({status: 0, msg: '用户名或者密码错误'})
         }
