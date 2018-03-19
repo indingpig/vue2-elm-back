@@ -4,10 +4,10 @@ var request = require('request');
 var download = require('download');
 var fs = require('fs');
 var DB = require('../public/javascripts/DB').DBOpera;
-var session = require('express-session');
+// var session = require('express-session');
 
 // 使用express-session 校验登录状态
-router.use(session())
+// router.use(session())
 
 router.use(function (req, res, next){
     console.log('Time', Date.now());
@@ -64,7 +64,7 @@ router.post('/query/loginUp', function(req, res, next) {
         }
         console.log(result)
         if (result.length > 0) {
-            res.send({status: 1, msg: '登陆成功'})
+            res.send({status: 1, msg: '登陆成功', userData: {userEmail:result[0].userEmail,userName: result[0].userName}})
         } else {
             res.send({status: 0, msg: '用户名或者密码错误'})
         }
