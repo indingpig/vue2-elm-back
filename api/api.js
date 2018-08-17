@@ -119,6 +119,10 @@ router.post('/query/testpost', function(req, res, next) {
     })
 });
 
-
+// 保存表单构建器的数据
+router.post('/formMgrtService/save', function(req, res, next) {
+    console.log('Request URL:', req.originalUrl);
+    
+})
 
 module.exports = router;
