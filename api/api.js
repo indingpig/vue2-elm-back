@@ -17,8 +17,15 @@ router.use(function (req, res, next){
 // api/test
 router.get('/test', function(req, res, next) {
     console.log('Request URL:', req.originalUrl);
-    console.log(req.query)
-    res.send('恭喜！请求test接口成功')
+    console.log(req.query);
+    res.send('恭喜！请求test接口成功');
+});
+
+// api/test
+router.get('/test1', function(req, res, next) {
+    console.log('Request URL:', req.originalUrl);
+    console.log(req.query);
+    res.send({a:1});
 })
 
 // 获取全部用户列表;
@@ -119,6 +126,19 @@ router.post('/query/testpost', function(req, res, next) {
     })
 });
 
+router.get('/query/vue/getTextPage', function(req, res, next) {
+    console.log('Request URL:', req.originalUrl);
+    var params = req.query;
+    if (!params.time) {
+        res.status(400).send('time param is required');
+        return;
+    }
+    var timer = setTimeout(function() {
+        clearTimeout(timer);
+        // res.send(`hello world form servive, time: ${params.time}`);
+        res.send(`${Number(params.time) + 1000}`);
+    }, params.time);
+})
 
 
 module.exports = router;
