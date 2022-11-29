@@ -5,7 +5,7 @@ var logger = require('morgan');
 var fs = require('fs');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var DB = require('./public/javascripts/DB').DBOpera;
+// var DB = require('./public/javascripts/DB').DBOpera;
 
 // 引入api文件
 var api = require('./api/api');
@@ -59,9 +59,9 @@ app.use(function(req, res, next) {
 
 // console.log(DB);
 // DB.insert('goodjob');
-DB.count('userlist', {}, function (erro, result) {
-  // console.log(result)
-})
+// DB.count('userlist', {}, function (erro, result) {
+//   // console.log(result)
+// })
 
 
 function query() {
